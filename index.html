@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive rating component</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="box">
+      <img class="image" src="/images/icon-star.svg" alt="">
+      <h1>How did we do?</h1>
+      <p class="desc">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+
+      <div class="rating">
+        <div class="rate">
+          <input name="rating" id="sel1" type="radio" value="1">
+          <label for="sel1"><span>1</span></label>
+        </div>
+        <div class="rate">
+          <input name="rating" id="sel2" type="radio" value="2">
+          <label for="sel2"><span>2</span></label>
+        </div>
+        <div class="rate">
+          <input name="rating" id="sel3" type="radio" value="3">
+          <label for="sel3"><span>3</span></label>
+        </div>
+        <div class="rate">
+          <input name="rating" id="sel4" type="radio" value="4">
+          <label for="sel4"><span>4</span></label>
+        </div>
+        <div class="rate">
+          <input name="rating" id="sel5" type="radio" value="5">
+          <label for="sel5"><span>5</span></label>
+        </div>
+      </div>
+      
+      <button id="submitBtn">Submit</button>
+      <div id="confirmationMessage" style="display: none">
+        <div class="div">
+          <img src="/images/illustration-thank-you.svg" alt="">
+        <p id="selectedRating"></p>
+        <h2>Thank you!</h2>
+        <p class="desc2">We adivpreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+        <button id="closeBtn"><i class="ri-close-circle-fill"></i></button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", function() {
+      var rating = document.querySelector('input[name="rating"]:checked');
+      if (rating) {
+        var ratingValue = rating.value;
+        document.getElementById("selectedRating").innerText = "You selected " + ratingValue + " out of 5.";
+        document.getElementById("confirmationMessage").style.display = "block";
+      } else {
+        alert("Please select a rating before submitting.");
+      }
+    });
+    
+    document.getElementById("closeBtn").addEventListener("click", function() {
+      document.getElementById("confirmationMessage").style.display = "none";
+    });
+    
+  </script>
+</body>
+</html>
